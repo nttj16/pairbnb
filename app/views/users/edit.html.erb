@@ -1,0 +1,79 @@
+<div class="container">
+	<h1>Edit User Profile</h1>
+	<br>
+
+	<div class="user-edit-form">
+		<%= form_for @user, { multipart: true } do |f| %>
+			<%= form_tag(edit_user_path, method: "patch") %>
+
+			<div class="form-group">
+				<%= f.label :name, "Name", class: "col-md-2 control-label" %>
+				<div class="col-md-5">
+					<%= f.text_field :name, class:"form-control" %>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<%= f.label :email, "Email", class: "col-md-2 control-label" %>
+				<div class="col-md-4">
+					<%= f.email_field :email, class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :password, "Password", class: "col-md-2 control-label" %>
+				<div class="col-md-3">
+					<%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+				</div>
+				<div class="col-md-3">
+					<%= f.password_field :retype_password, placeholder: "Re-type password", class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :birthdate, "Birth date", class: "col-md-2 control-label" %>
+				<div class="col-md-2">
+					<%= f.date_field :birthdate, class: "form-control" %>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<%= f.label :phone, "Phone number", class: "col-md-2 control-label" %>
+				<div class="col-md-3">
+					<%= f.text_field :phone, class: "form-control" %>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<%= f.label :country, "Country", class: "col-md-2 control-label" %>
+				<div class="col-md-2">
+					<%= f.select :country, User.countries, {}, { class: "form-control" } %>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<%= f.label :avatar, "Profile picture", class: "col-md-2 control-label" %>
+				<div class="col-md-5">
+					<%= image_tag(@user.avatar_url) if @user.avatar? %>
+					<%= f.file_field :avatar %>
+					<div class="remove-avatar">
+						<%= f.check_box :remove_avatar %>
+						Remove Avatar
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<%= f.submit %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+
+</div>
