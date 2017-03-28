@@ -1,8 +1,29 @@
 class UsersController < Clearance::UsersController
-def edit
-  current_user_authorised?(params[:id]), user_path(id: params[:id])
-  @user = User.find_by_id(params[:id])
-end
+before_action :find_user, only: [:show, :edit, :update]
+  def index
+  end
+
+
+  def edit
+  end
+
+  def update
+    if @user.update(listing_params)
+        flash[:success] = "Sucessfully updated user"
+        redirect_to @user
+    else
+        flash[:danger] = "Error updating user"
+        render :edit
+    end
+  end
+
+  def show
+  end
+
+  def find_user
+      @user = User.find(params[:id])
+  end
+
 
 private
   def user_params

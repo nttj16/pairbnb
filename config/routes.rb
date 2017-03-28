@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'listings#index'
   # get "/" => "welcome#index", as: "root"
 
   #routes for users
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   #routes for facebook authentication - redirect from facebook after authentication
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   #routes for listings
-  resources :listings, except: [:index]
+  resources :listings
 end
 
 
