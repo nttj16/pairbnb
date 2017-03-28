@@ -1,15 +1,38 @@
 class ListingsController < ApplicationController
+before_action :find_listing, only: [:show, :edit, :update]
   def index
+    @listings = Listing.all
   end
 
   def new
-    @listing = listing.new
+    @listing = Listing.new
   end
 
   def create
-    @listing = Listing,new(listing_params)
+    @listing = Listing.new(listing_params)
     if @listing.save
       redirect_to listings_path
     end
   end
+
+  def show
+  end
+
+  def update
+    if @listing.update(listing_params)
+      flash[:success] = "Sucessfully updated listing"
+      redirect_to @listing
+    else
+      flash[:danger] = "Error updating listing"
+      render :edit
+    end
+  end
+  end
+
+
+  def listing_params
+    params.require(:listing).permit(:title, :location, :description, :price, :max_guests)
+  end
+
+
 end

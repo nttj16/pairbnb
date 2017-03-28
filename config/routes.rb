@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'listings#index'
   # get "/" => "welcome#index", as: "root"
 
   #routes for users

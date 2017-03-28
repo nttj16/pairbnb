@@ -26,12 +26,14 @@ ActiveRecord::Schema.define(version: 20170325170534) do
   end
 
   create_table "listings", force: :cascade do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "location"
     t.integer  "price"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.integer  "max_guests"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_listings_on_user_id", using: :btree
   end
 
@@ -48,4 +50,5 @@ ActiveRecord::Schema.define(version: 20170325170534) do
   end
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "listings", "users"
 end
