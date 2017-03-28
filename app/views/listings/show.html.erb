@@ -1,4 +1,7 @@
 <h1> Title: <%= @listing.title %></h1>
+<div>
+  Posted By: <%= @listing.user.email %>
+</div>
 <p> Description: <%= @listing.description %></h1>
 <p> Max Guests: <%= @listing.max_guests %></h1>
 <p> Price: <%= @listing.price %></h1>

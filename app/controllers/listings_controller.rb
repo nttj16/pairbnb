@@ -9,9 +9,12 @@ before_action :find_listing, only: [:show, :edit, :update]
   end
 
   def create
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listings.new(listing_params)
     if @listing.save
       redirect_to listings_path
+    else
+      flash[:danger] = "Unable to save"
+      render 'form'
     end
   end
 
@@ -26,6 +29,9 @@ before_action :find_listing, only: [:show, :edit, :update]
       flash[:danger] = "Error updating listing"
       render :edit
     end
+  end
+
+  def destroy
   end
 
 
