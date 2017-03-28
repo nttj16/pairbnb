@@ -20,6 +20,10 @@ before_action :find_user, only: [:show, :edit, :update]
   def show
   end
 
+  def find_user
+      @user = User.find(params[:id])
+  end
+
 
 private
   def user_params

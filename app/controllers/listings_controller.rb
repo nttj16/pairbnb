@@ -27,11 +27,14 @@ before_action :find_listing, only: [:show, :edit, :update]
       render :edit
     end
   end
-  end
 
 
   def listing_params
     params.require(:listing).permit(:title, :location, :description, :price, :max_guests)
+  end
+
+  def find_listing
+    @listing = Listing.find(params[:id])
   end
 
 
