@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
 before_action :find_listing, only: [:show, :edit, :update]
   def index
     @listings = Listing.all
+    @listings = Listing.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
