@@ -1,4 +1,4 @@
-class UsersController < Clearance::UsersController
+!1class UsersController < Clearance::UsersController
 before_action :find_user, only: [:show, :edit, :update]
   def index
   end
