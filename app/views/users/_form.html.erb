@@ -1,3 +1,6 @@
+<div class="signup-container">
+  <%= button_to "Continue with Facebook", "/auth/facebook", class: "btn btn-default btn-lg btn-block btn-facebook" %>
+
 <div class="text-field">
   <%= form.label :email %>
   <%= form.text_field :email, type: 'email' %>
@@ -12,5 +15,3 @@
   <%= form.label :name %>
   <%= form.text_field :name, type: 'text' %>
 </div>
-
-<%= link_to "Sign in with Facebook", "/auth/facebook" %>

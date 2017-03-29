@@ -3,9 +3,14 @@ before_action :find_listing, only: [:show, :edit, :update]
   def index
     @listings = Listing.all
     @listings = Listing.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   def new
+    # if user.customer?
+    #    flash[:notice] = "Sorry. You are not allowed to perform this action."
+    #    return redirect_to some_other_url, notice: "Sorry. You do not have the permissino to verify a property."
+    #  end
     @listing = Listing.new
   end
 

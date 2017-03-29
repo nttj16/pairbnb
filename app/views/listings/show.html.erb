@@ -1,3 +1,4 @@
+<div class = 'container centered'>
 <h1> Title: <%= @listing.title %></h1>
 <div>
   Posted By: <%= @listing.user.email %>
@@ -6,3 +7,5 @@
 <p> Max Guests: <%= @listing.max_guests %></h1>
 <p> Price: <%= @listing.price %></h1>
 <%= link_to "Edit", edit_listing_path(@listing) %>
+<%= link_to "Back", :back %>
+<div>
